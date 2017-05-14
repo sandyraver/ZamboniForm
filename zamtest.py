@@ -75,8 +75,6 @@ class ZamTest_Form:
         top.geometry("819x659+573+178")
         top.title("ZamTest Form")
         top.configure(background="#d9d9d9")
-
-        
        
         
         #This configures widgets
@@ -152,6 +150,7 @@ class ZamTest_Form:
         #self.photo = PhotoImage(file="designer.png")
         #self.Checkbutton3.configure(image=self.photo)
         self.Checkbutton3.deselect()
+    
 
         self.Checkbutton4 = Checkbutton(top)
         self.Checkbutton4.place(relx=0.78, rely=0.38, relheight=0.04
@@ -474,7 +473,7 @@ class ZamTest_Form:
         resurfaceText =  arr #self.Scrolledlistbox1.get(0,END)
         #shortResurface = resurfaceText.replace("|", "")
         #print(resurfaceText)
-        heading = ["date", "time", "rink"]
+        heading = ["Date", "Time", "Rink", "Board Brush", "Wash Water", "Wet Cut", "Dry Cut", "Flood", "Dump Tank", "HoneyWells", "Room Temp/Humidity", "Initials", "Comment"]
         #blah = self.parseResurface(resurfaceText[0])
         #print(blah[0])
 
