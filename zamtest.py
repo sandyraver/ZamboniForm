@@ -424,6 +424,8 @@ class ZamTest_Form:
         self.Checkbutton7.configure(variable=zamtest_support.rink1)
         self.Checkbutton7.deselect()
 
+
+        
         self.Checkbutton8 = Checkbutton(top)
         self.Checkbutton8.place(relx=0.26, rely=0.13, relheight=0.04
                 , relwidth=0.07)
