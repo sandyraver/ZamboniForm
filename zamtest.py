@@ -77,8 +77,8 @@ class ZamTest_Form:
         top.configure(background="#d9d9d9")
        
         
-        #This configures widgets
-        #Ice Complex Banner
+         #This configures widgets
+        ##Ice Complex Banner
         banner = Image.open("banner.png")
         bannerPhoto = ImageTk.PhotoImage(banner)
         self.Label1 = Label(top, image=bannerPhoto)
@@ -97,7 +97,7 @@ class ZamTest_Form:
         self.Label1.configure(width=154)
         #-----------------------------
 
-        
+        #Flood Checkbutton
         self.Checkbutton1 = Checkbutton(top)
         self.Checkbutton1.place(relx=0.78, rely=0.3, relheight=0.04
                 , relwidth=0.21)
@@ -114,7 +114,9 @@ class ZamTest_Form:
         self.Checkbutton1.configure(variable=zamtest_support.flood)
         self.Checkbutton1.configure(width=171)
         self.Checkbutton1.deselect()
+        #---------------------------
 
+        #Dry Checkbutton
         self.Checkbutton2 = Checkbutton(top)
         self.Checkbutton2.place(relx=0.78, rely=0.26, relheight=0.04
                 , relwidth=0.22)
@@ -131,7 +133,9 @@ class ZamTest_Form:
         self.Checkbutton2.configure(variable=zamtest_support.dry)
         self.Checkbutton2.configure(width=181)
         self.Checkbutton2.deselect()
+        #---------------------------
 
+        #Edge Checkbutton
         self.Checkbutton3 = Checkbutton(top)
         self.Checkbutton3.place(relx=0.78, rely=0.42, relheight=0.04
                 , relwidth=0.21)
@@ -150,8 +154,9 @@ class ZamTest_Form:
         #self.photo = PhotoImage(file="designer.png")
         #self.Checkbutton3.configure(image=self.photo)
         self.Checkbutton3.deselect()
-    
+        #---------------------------
 
+        #3 Lap Checkbutton
         self.Checkbutton4 = Checkbutton(top)
         self.Checkbutton4.place(relx=0.78, rely=0.38, relheight=0.04
                 , relwidth=0.21)
@@ -168,7 +173,9 @@ class ZamTest_Form:
         self.Checkbutton4.configure(variable=zamtest_support.threeLap)
         self.Checkbutton4.configure(width=171)
         self.Checkbutton4.deselect()
+        #---------------------------
 
+        #Recent Resurfaces Checkbutton
         self.Scrolledlistbox1 = ScrolledListBox(top)
         self.Scrolledlistbox1.place(relx=0.12, rely=0.68, relheight=0.3
                 , relwidth=0.76)
@@ -182,9 +189,9 @@ class ZamTest_Form:
         self.Scrolledlistbox1.configure(selectforeground="black")
         self.Scrolledlistbox1.configure(width=10)
         self.Scrolledlistbox1.configure(listvariable=zamtest_support.Recent_Resurfaces)
-
-        #---------------------------------
-        #Board Brush
+        #---------------------------
+        
+        #Board Brush Checkbutton
         self.Checkbutton9 = Checkbutton(top)
         self.Checkbutton9.place(relx=0.78, rely=0.18, relheight=0.04
                 , relwidth=0.21)
@@ -203,7 +210,7 @@ class ZamTest_Form:
         self.Checkbutton9.deselect()
         #---------------------------------
 
-        
+        #Wet Checkbutton
         self.Checkbutton5 = Checkbutton(top)
         self.Checkbutton5.place(relx=0.78, rely=0.22, relheight=0.04
                 , relwidth=0.21)
@@ -220,7 +227,9 @@ class ZamTest_Form:
         self.Checkbutton5.configure(variable=zamtest_support.wet)
         self.Checkbutton5.configure(width=171)
         self.Checkbutton5.deselect()
+        #---------------------------
 
+        #Center Flood Checkbutton
         self.Checkbutton6 = Checkbutton(top)
         self.Checkbutton6.place(relx=0.78, rely=0.34, relheight=0.04
                 , relwidth=0.21)
@@ -237,8 +246,9 @@ class ZamTest_Form:
         self.Checkbutton6.configure(variable=zamtest_support.centerFlood)
         self.Checkbutton6.configure(width=171)
         self.Checkbutton6.deselect()
-        #test disable
+        #---------------------------
 
+        #Dump tank Label
         self.Label3 = Label(top)
         self.Label3.place(relx=0.0, rely=0.2, height=21, width=154)
         self.Label3.configure(anchor=E)
@@ -247,7 +257,9 @@ class ZamTest_Form:
         self.Label3.configure(foreground="#000000")
         self.Label3.configure(text='''Dump Tank Level''')
         self.Label3.configure(width=154)
+        #---------------------------
 
+        #Temp Label
         self.Label4 = Label(top)
         self.Label4.place(relx=0.0, rely=0.26, height=21, width=154)
         self.Label4.configure(activebackground="#f9f9f9")
@@ -260,7 +272,9 @@ class ZamTest_Form:
         self.Label4.configure(highlightcolor="black")
         self.Label4.configure(text='''Temperature''')
         self.Label4.configure(width=154)
+        #---------------------------
 
+        #Temp/Humid Label
         self.Label5 = Label(top)
         self.Label5.place(relx=0.0, rely=0.32, height=21, width=154)
         self.Label5.configure(activebackground="#f9f9f9")
@@ -273,7 +287,9 @@ class ZamTest_Form:
         self.Label5.configure(highlightcolor="black")
         self.Label5.configure(text='''Temp / Humidity''')
         self.Label5.configure(width=154)
+        #---------------------------
 
+        #Comment Label
         self.Label6 = Label(top)
         self.Label6.place(relx=0.0, rely=0.38, height=21, width=154)
         self.Label6.configure(activebackground="#f9f9f9")
@@ -286,7 +302,9 @@ class ZamTest_Form:
         self.Label6.configure(highlightcolor="black")
         self.Label6.configure(text='''Comment''')
         self.Label6.configure(width=154)
+        #---------------------------
 
+        #Initials Label
         self.Label7 = Label(top)
         self.Label7.place(relx=0.0, rely=0.44, height=21, width=154)
         self.Label7.configure(activebackground="#f9f9f9")
@@ -299,7 +317,9 @@ class ZamTest_Form:
         self.Label7.configure(highlightcolor="black")
         self.Label7.configure(text='''Zam Driver Initials''')
         self.Label7.configure(width=154)
+        #---------------------------
 
+        #Dump Tank Entry 
         self.Entry3 = Entry(top)
         self.Entry3.place(relx=0.21, rely=0.2, relheight=0.03, relwidth=0.2)
         self.Entry3.configure(background="white")
@@ -312,7 +332,9 @@ class ZamTest_Form:
         self.Entry3.configure(selectbackground="#c4c4c4")
         self.Entry3.configure(selectforeground="black")
         self.Entry3.configure(width=164)
+        #---------------------------
 
+        #Temp Entry
         self.Entry4 = Entry(top)
         self.Entry4.place(relx=0.21, rely=0.26, relheight=0.03, relwidth=0.2)
         self.Entry4.configure(background="white")
@@ -325,7 +347,9 @@ class ZamTest_Form:
         self.Entry4.configure(selectbackground="#c4c4c4")
         self.Entry4.configure(selectforeground="black")
         self.Entry4.configure(width=164)
+        #---------------------------
 
+        #Temp/Humid Entry
         self.Entry5 = Entry(top)
         self.Entry5.place(relx=0.21, rely=0.32, relheight=0.03, relwidth=0.2)
         self.Entry5.configure(background="white")
@@ -338,7 +362,9 @@ class ZamTest_Form:
         self.Entry5.configure(selectbackground="#c4c4c4")
         self.Entry5.configure(selectforeground="black")
         self.Entry5.configure(width=164)
+        #---------------------------
 
+        #Comment Entry
         self.Entry6 = Entry(top)
         self.Entry6.place(relx=0.21, rely=0.38, relheight=0.03, relwidth=0.2)
         self.Entry6.configure(background="white")
@@ -351,7 +377,9 @@ class ZamTest_Form:
         self.Entry6.configure(selectbackground="#c4c4c4")
         self.Entry6.configure(selectforeground="black")
         self.Entry6.configure(width=164)
+        #---------------------------
 
+        #Initials Entry
         self.Entry7 = Entry(top)
         self.Entry7.place(relx=0.21, rely=0.44, relheight=0.03, relwidth=0.2)
         self.Entry7.configure(background="white")
@@ -365,7 +393,9 @@ class ZamTest_Form:
         self.Entry7.configure(selectforeground="black")
         self.Entry7.configure(width=164)
         ##self.Entry7.configure(justify="right")
+        #---------------------------
 
+        #Submit Button
         self.Button1 = Button(top)
         self.Button1.place(relx=0.67, rely=0.56, height=34, width=157)
         self.Button1.configure(activebackground="#d9d9d9")
@@ -378,12 +408,11 @@ class ZamTest_Form:
         self.Button1.configure(pady="0")
         self.Button1.configure(text='''Submit''')
         self.Button1.configure(width=157)
-        ##test global button command from support
-##        self.Button1.configure(command=print(zamtest_support.che56.get()))
         self.Button1.configure(command=self.writeResurface)
+        #---------------------------
 
-#############################################
 
+        #Export Button
         self.Button2 = Button(top)
         self.Button2.place(relx=0.40, rely=0.56, height=34, width=157)
         self.Button2.configure(activebackground="#d9d9d9")
@@ -396,10 +425,9 @@ class ZamTest_Form:
         self.Button2.configure(pady="0")
         self.Button2.configure(text="Export")
         self.Button2.configure(width=157)
-## Call Export Function
+        ## Call Export Function
         self.Button2.configure(command =lambda : self.getExportData(self.Scrolledlistbox1.get(0,END)))
-
-#############################################
+        #---------------------------
         
         self.Label8 = Label(top)
         self.Label8.place(relx=0.12, rely=0.64, height=21, width=174)
@@ -425,7 +453,7 @@ class ZamTest_Form:
         self.Checkbutton7.deselect()
 
 
-        #     tthe
+        ##
         self.Checkbutton8 = Checkbutton(top)
         self.Checkbutton8.place(relx=0.26, rely=0.13, relheight=0.04
                 , relwidth=0.07)
@@ -457,6 +485,10 @@ class ZamTest_Form:
         return (line)
     
     def exportXls(self, exp):
+        #---------------------------
+        ##Description: Accepts 2d list of all Recent Resurfaces
+        ## and writes them to xls document based on position in list
+        #---------------------------
         workbook = xlsxwriter.Workbook("test.xlsx")
         worksheet = workbook.add_worksheet()
 
@@ -467,12 +499,15 @@ class ZamTest_Form:
             for l in i:
                 worksheet.write(row,col, l)
                 col += 1
-            col = 0
             row += 1
         workbook.close()
 
         
     def getExportData(self,arr):
+        #---------------------------
+        ##Description: Accepts list of strings from Recent resurfaces(scrolled listbox)
+        ## adds formats adds heading and 
+        #---------------------------
         resurfaceText =  arr #self.Scrolledlistbox1.get(0,END)
         #shortResurface = resurfaceText.replace("|", "")
         #print(resurfaceText)
