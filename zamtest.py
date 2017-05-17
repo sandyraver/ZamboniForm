@@ -424,6 +424,8 @@ class ZamTest_Form:
         self.Checkbutton7.configure(variable=zamtest_support.rink1)
         self.Checkbutton7.deselect()
 
+
+        
         self.Checkbutton8 = Checkbutton(top)
         self.Checkbutton8.place(relx=0.26, rely=0.13, relheight=0.04
                 , relwidth=0.07)
@@ -465,6 +467,7 @@ class ZamTest_Form:
             for l in i:
                 worksheet.write(row,col, l)
                 col += 1
+            col = 0
             row += 1
         workbook.close()
 
@@ -473,7 +476,9 @@ class ZamTest_Form:
         resurfaceText =  arr #self.Scrolledlistbox1.get(0,END)
         #shortResurface = resurfaceText.replace("|", "")
         #print(resurfaceText)
-        heading = ["Date", "Time", "Rink", "Board Brush", "Wash Water", "Wet Cut", "Dry Cut", "Flood", "Dump Tank", "HoneyWells", "Room Temp/Humidity", "Initials", "Comment"]
+        #Add "Wash Water"
+        heading = ["Date", "Time", "Rink", "Board Brush", "Wet Cut", "Dry Cut","Edged",
+                   "Three Lap", "Flood","Center Flood" , "Dump Tank", "HoneyWells", "Room Temp/Humidity", "Initials", "Comment"]
         #blah = self.parseResurface(resurfaceText[0])
         #print(blah[0])
 
@@ -486,9 +491,10 @@ class ZamTest_Form:
         count = 1
 
 ##        #set heading for xls
-        for l in heading:
-            exp[0].append(l) 
-        print(exp[0])
+##        for l in heading:
+##            exp[0].append(l) 
+##        print(exp[0])
+        exp[0] = heading
         #loop through arr
             #set line = parse(i)
             #exp[count] = line
@@ -526,27 +532,37 @@ class ZamTest_Form:
         #writeTim()
         resurfaceText=self.writeTime()
         #get checks and entries ----------------------------------------
-
+        
         #checks
         if int(zamtest_support.rink1.get()) == 1:
-            resurfaceText = resurfaceText + "rink1 | "
-        if int(zamtest_support.rink2.get()) == 1:
-            resurfaceText = resurfaceText + "rink2 | "
-        if int(zamtest_support.wet.get()) == 1:
-            resurfaceText = resurfaceText + "wet | "
-            self.Checkbutton2.deselect()
+            resurfaceText = resurfaceText + "Rink1 | "
+        elif int(zamtest_support.rink2.get()) == 1:
+            resurfaceText = resurfaceText + "Rink2 | "
         if int(zamtest_support.boardBrush.get()) == 1:
-            resurfaceText = resurfaceText + "brush | "
-        if int(zamtest_support.dry.get()) == 1:
-            resurfaceText = resurfaceText + "dry | "
-        if int(zamtest_support.centerFlood.get()) == 1:
-            resurfaceText = resurfaceText + "Center Flood | "
-        if int(zamtest_support.edge.get()) == 1:
-            resurfaceText = resurfaceText + "edged | "
-        if int(zamtest_support.threeLap.get()) == 1:
-            resurfaceText = resurfaceText + "Three Lap | "
+            resurfaceText = resurfaceText + "Brush | "
+        if int(zamtest_support.wet.get()) == 1:
+            resurfaceText = resurfaceText + "Wet | 0 | 0 | 0 | "
+            self.Checkbutton2.deselect()
+        elif int(zamtest_support.dry.get()) == 1:
+            resurfaceText = resurfaceText + "0 | Dry | "
+            if int(zamtest_support.edge.get()) == 1:
+                resurfaceText = resurfaceText + "Edged | "
+            else:
+                resurfaceText = resurfaceText + "0 | "
+            if int(zamtest_support.threeLap.get()) == 1:
+                resurfaceText = resurfaceText + "Three Lap | "
+            else:
+                resurfaceText = resurfaceText + "0 | "
         if int(zamtest_support.flood.get()) == 1:
             resurfaceText = resurfaceText + "Flood | "
+        else:
+            resurfaceText = resurfaceText + "0 | "
+        if int(zamtest_support.centerFlood.get()) == 1:
+            resurfaceText = resurfaceText + "Center Flood | "
+        else:
+            resurfaceText = resurfaceText + "0 | "
+        
+        
             
         #entries
         resurfaceText = resurfaceText + self.Entry3.get() + " | "
