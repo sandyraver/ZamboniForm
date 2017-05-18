@@ -593,6 +593,8 @@ class ZamTest_Form:
                 resurfaceText = resurfaceText + "Three Lap | "
             else:
                 resurfaceText = resurfaceText + "0 | "
+        else:
+            resurfaceText = resurfaceText + "0 | 0 | 0 | 0 | "
         if int(zamtest_support.flood.get()) == 1:
             resurfaceText = resurfaceText + "Flood | "
         else:
@@ -608,8 +610,9 @@ class ZamTest_Form:
         resurfaceText = resurfaceText + self.Entry3.get() + " | "
         resurfaceText = resurfaceText + self.Entry4.get() + " | "
         resurfaceText = resurfaceText + self.Entry5.get() + " | "
+        resurfaceText = resurfaceText + self.Entry7.get() + " | "
         resurfaceText = resurfaceText + self.Entry6.get() + " | "
-        resurfaceText = resurfaceText + self.Entry7.get() + ""
+
 
         #set resurface text += " %checks and %entries"
         self.Scrolledlistbox1.insert(END, resurfaceText)
