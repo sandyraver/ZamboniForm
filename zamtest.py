@@ -24,12 +24,12 @@ import zamtest_support
 from PIL import Image, ImageTk
 
 global banner
-global bannerPhoto 
+global bannerPhoto
 
 def vp_start_gui():
     '''Starting point when module is the main routine.'''
     global val, w, root
-   
+
     root = Tk()
     zamtest_support.set_Tk_var()
     top = ZamTest_Form (root)
@@ -52,8 +52,8 @@ def destroy_ZamTest_Form():
     w.destroy()
     w = None
 
-       
-    
+
+
 
 class ZamTest_Form:
     def __init__(self, top=None):
@@ -62,8 +62,8 @@ class ZamTest_Form:
         _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
         _fgcolor = '#000000'  # X11 color: 'black'
         _compcolor = '#d9d9d9' # X11 color: 'gray85'
-        _ana1color = '#d9d9d9' # X11 color: 'gray85' 
-        _ana2color = '#d9d9d9' # X11 color: 'gray85' 
+        _ana1color = '#d9d9d9' # X11 color: 'gray85'
+        _ana2color = '#d9d9d9' # X11 color: 'gray85'
         self.style = ttk.Style()
         if sys.platform == "win32":
             self.style.theme_use('winnative')
@@ -75,8 +75,8 @@ class ZamTest_Form:
         top.geometry("819x659+573+178")
         top.title("ZamTest Form")
         top.configure(background="#d9d9d9")
-       
-        
+
+
          #This configures widgets
         ##Ice Complex Banner
         banner = Image.open("banner.png")
@@ -190,7 +190,7 @@ class ZamTest_Form:
         self.Scrolledlistbox1.configure(width=10)
         self.Scrolledlistbox1.configure(listvariable=zamtest_support.Recent_Resurfaces)
         #---------------------------
-        
+
         #Board Brush Checkbutton
         self.Checkbutton9 = Checkbutton(top)
         self.Checkbutton9.place(relx=0.78, rely=0.18, relheight=0.04
@@ -319,7 +319,7 @@ class ZamTest_Form:
         self.Label7.configure(width=154)
         #---------------------------
 
-        #Dump Tank Entry 
+        #Dump Tank Entry
         self.Entry3 = Entry(top)
         self.Entry3.place(relx=0.21, rely=0.2, relheight=0.03, relwidth=0.2)
         self.Entry3.configure(background="white")
@@ -428,7 +428,7 @@ class ZamTest_Form:
         ## Call Export Function
         self.Button2.configure(command =lambda : self.getExportData(self.Scrolledlistbox1.get(0,END)))
         #---------------------------
-        
+
         self.Label8 = Label(top)
         self.Label8.place(relx=0.12, rely=0.64, height=21, width=174)
         self.Label8.configure(background="#d9d9d9")
@@ -481,9 +481,9 @@ class ZamTest_Form:
         #----------------
 
         line =  txt.split(" | ")
-       
+
         return (line)
-    
+
     def exportXls(self, exp):
         #---------------------------
         ##Description: Accepts 2d list of all Recent Resurfaces
@@ -499,14 +499,15 @@ class ZamTest_Form:
             for l in i:
                 worksheet.write(row,col, l)
                 col += 1
+            col = 0
             row += 1
         workbook.close()
 
-        
+
     def getExportData(self,arr):
         #---------------------------
         ##Description: Accepts list of strings from Recent resurfaces(scrolled listbox)
-        ## adds formats adds heading and 
+        ## adds formats adds heading and
         #---------------------------
         resurfaceText =  arr #self.Scrolledlistbox1.get(0,END)
         #shortResurface = resurfaceText.replace("|", "")
@@ -521,13 +522,13 @@ class ZamTest_Form:
         #print(len(self.Scrolledlistbox1.get(0,END)))
         print(len(arr))
         exp = [[] for i in range(len(arr) + 1)]
-               
+
         #iterator
         count = 1
 
 ##        #set heading for xls
 ##        for l in heading:
-##            exp[0].append(l) 
+##            exp[0].append(l)
 ##        print(exp[0])
         exp[0] = heading
         #loop through arr
@@ -542,8 +543,8 @@ class ZamTest_Form:
             count += 1
         #export
         self.exportXls(exp)
-       
-    
+
+
     def writeTime(self):
         timm = time.localtime()
         date = str(timm[1]) + "/" + str(timm[2]) + "/" + str(timm[0])
@@ -556,18 +557,18 @@ class ZamTest_Form:
             hour = timm[3]
 
         timofday =  str(hour) + ":" +  str(timm[4])
-        dateandtime = date + " | " + timofday 
+        dateandtime = date + " | " + timofday
 
         return(dateandtime + pmam + " | ")
-   
-    
+
+
     def writeResurface(self):
         #print(zamtest_support.centerFlood.get())
         #creat resurface text = date and time
         #writeTim()
         resurfaceText=self.writeTime()
         #get checks and entries ----------------------------------------
-        
+
         #checks
         if int(zamtest_support.rink1.get()) == 1:
             resurfaceText = resurfaceText + "Rink1 | "
@@ -596,9 +597,9 @@ class ZamTest_Form:
             resurfaceText = resurfaceText + "Center Flood | "
         else:
             resurfaceText = resurfaceText + "0 | "
-        
-        
-            
+
+
+
         #entries
         resurfaceText = resurfaceText + self.Entry3.get() + " | "
         resurfaceText = resurfaceText + self.Entry4.get() + " | "
@@ -609,14 +610,14 @@ class ZamTest_Form:
         #set resurface text += " %checks and %entries"
         self.Scrolledlistbox1.insert(END, resurfaceText)
 
-        #clearing all the entries 
+        #clearing all the entries
         self.Entry3.delete(0,END)
         self.Entry4.delete(0,END)
         self.Entry5.delete(0,END)
         self.Entry6.delete(0,END)
         self.Entry7.delete(0,END)
 
-       #deselecting all the buttons 
+       #deselecting all the buttons
         self.Checkbutton1.deselect()
         self.Checkbutton2.deselect()
         self.Checkbutton3.deselect()
@@ -708,6 +709,3 @@ if __name__ == '__main__':
     vp_start_gui()
     if zamtest_support.dry.get() == 1:
         print("1 Test")
-
-
-

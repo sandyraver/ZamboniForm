@@ -29,8 +29,8 @@ def set_Tk_var():
     edge = StringVar()
     global threeLap
     threeLap = StringVar()
-    global Recent_Resurfaces
-    Recent_Resurfaces = StringVar()
+    #global Recent_Resurfaces
+    #Recent_Resurfaces = StringVar()
     global wet
     wet = StringVar()
     global centerFlood
@@ -43,7 +43,7 @@ def set_Tk_var():
     rink2 = StringVar()
     global boardBrush
     boardBrush = StringVar()
-    
+
 def init(top, gui, *args, **kwargs):
     global w, top_level, root
     w = gui
@@ -59,8 +59,3 @@ def destroy_window():
 if __name__ == '__main__':
     import zamtest
     zamtest.vp_start_gui()
-
-
-
-
-
