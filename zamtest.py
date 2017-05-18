@@ -608,13 +608,15 @@ class ZamTest_Form:
 
         #set resurface text += " %checks and %entries"
         self.Scrolledlistbox1.insert(END, resurfaceText)
-        
+
+        #clearing all the entries 
         self.Entry3.delete(0,END)
         self.Entry4.delete(0,END)
         self.Entry5.delete(0,END)
         self.Entry6.delete(0,END)
         self.Entry7.delete(0,END)
-   
+
+       #deselecting all the buttons 
         self.Checkbutton1.deselect()
         self.Checkbutton2.deselect()
         self.Checkbutton3.deselect()

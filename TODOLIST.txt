@@ -1,0 +1,3 @@
+1. Add wash water Checkbutton 
+2. Add a button to remove currently selected item in the listbox (ie. Being able to remove resurfaces if you messed up)
+	Or adding a second window when button is clicked to edit any field of the listbox 
