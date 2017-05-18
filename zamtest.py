@@ -574,8 +574,12 @@ class ZamTest_Form:
             resurfaceText = resurfaceText + "Rink1 | "
         elif int(zamtest_support.rink2.get()) == 1:
             resurfaceText = resurfaceText + "Rink2 | "
+        else:
+            resurfaceText = resurfaceText + "0 | "
         if int(zamtest_support.boardBrush.get()) == 1:
             resurfaceText = resurfaceText + "Brush | "
+        else:
+            resurfaceText = resurfaceText + "0 | "
         if int(zamtest_support.wet.get()) == 1:
             resurfaceText = resurfaceText + "Wet | 0 | 0 | 0 | "
             self.Checkbutton2.deselect()
