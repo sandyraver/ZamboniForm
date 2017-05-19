@@ -118,7 +118,7 @@ class ZamTest_Form:
 
         #Dry Checkbutton
         self.Dry = Checkbutton(top)
-        self.Dry.place(relx=0.78, rely=0.30, relheight=0.04
+        self.Dry.place(relx=0.78, rely=0.38, relheight=0.04
                 , relwidth=0.22)
         self.Dry.configure(activebackground="#d9d9d9")
         self.Dry.configure(activeforeground="#000000")
@@ -137,7 +137,7 @@ class ZamTest_Form:
 
         #Edge Checkbutton
         self.Edge = Checkbutton(top)
-        self.Edge.place(relx=0.78, rely=0.42, relheight=0.04
+        self.Edge.place(relx=0.78, rely=0.46, relheight=0.04
                 , relwidth=0.21)
         self.Edge.configure(activebackground="#d9d9d9")
         self.Edge.configure(activeforeground="#000000")
@@ -158,7 +158,7 @@ class ZamTest_Form:
 
         #3 Lap Checkbutton
         self.ThreeLap = Checkbutton(top)
-        self.ThreeLap.place(relx=0.78, rely=0.38, relheight=0.04
+        self.ThreeLap.place(relx=0.78, rely=0.34, relheight=0.04
                 , relwidth=0.21)
         self.ThreeLap.configure(activebackground="#d9d9d9")
         self.ThreeLap.configure(activeforeground="#000000")
@@ -250,7 +250,7 @@ class ZamTest_Form:
 
         #Center Flood Checkbutton
         self.CenterFlood = Checkbutton(top)
-        self.CenterFlood.place(relx=0.78, rely=0.34, relheight=0.04
+        self.CenterFlood.place(relx=0.78, rely=0.42, relheight=0.04
                 , relwidth=0.21)
         self.CenterFlood.configure(activebackground="#d9d9d9")
         self.CenterFlood.configure(activeforeground="#000000")
