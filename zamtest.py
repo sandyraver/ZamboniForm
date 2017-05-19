@@ -493,6 +493,35 @@ class ZamTest_Form:
         self.menubar = Menu(top,font="TkMenuFont",bg=_bgcolor,fg=_fgcolor)
         top.configure(menu = self.menubar)
 
+
+        # Get selected entry
+    # if board/wet/wash/dry/center/3-lap/edge  are in string recheck respective boxes
+    # parse it into individual elements for the text entries
+    # reinsert text entries back into the input boxes in order
+
+
+    # Get selected entry (entr)
+    # if entr.find("Wash", 0)
+    # then check washwater checkbox
+    # if entr.find("Wet", 0)
+    # then check wet checkbox
+    # ...
+
+    # Parse entry backwards ( If applicable)
+    # Massive systemic problem ( how the fuck do you tell which is which lol)
+    # Algorithm for determining what is what based on element lay out/order
+    # element content can't help in determining no entry checking
+    #
+
+    # Half the number of slots can be cut down
+    # 4 zeros even when every entry is checked
+    # Write resurface could be adjusted to fix this
+    # by making the if statements more complex
+    # So What conflicts with what?
+    # Board brush, wash water stand alone?
+    # wet and dry, Center flood and dry?
+    # Graphically outline what does what
+
     def parseResurface(self,txt):
         #----------------
         ## Description: Accepts string of resurface text and returns
