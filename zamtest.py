@@ -118,7 +118,7 @@ class ZamTest_Form:
 
         #Dry Checkbutton
         self.Checkbutton2 = Checkbutton(top)
-        self.Checkbutton2.place(relx=0.78, rely=0.26, relheight=0.04
+        self.Checkbutton2.place(relx=0.78, rely=0.30, relheight=0.04
                 , relwidth=0.22)
         self.Checkbutton2.configure(activebackground="#d9d9d9")
         self.Checkbutton2.configure(activeforeground="#000000")
@@ -210,9 +210,28 @@ class ZamTest_Form:
         self.Checkbutton9.deselect()
         #---------------------------------
 
+        #Wash water Checkbutton
+        self.Checkbutton10 = Checkbutton(top)
+        self.Checkbutton10.place(relx=0.78, rely=0.22, relheight=0.04
+                , relwidth=0.21)
+        self.Checkbutton10.configure(activebackground="#d9d9d9")
+        self.Checkbutton10.configure(activeforeground="#000000")
+        self.Checkbutton10.configure(anchor=W)
+        self.Checkbutton10.configure(background="#d9d9d9")
+        self.Checkbutton10.configure(disabledforeground="#a3a3a3")
+        self.Checkbutton10.configure(foreground="#000000")
+        self.Checkbutton10.configure(highlightbackground="#d9d9d9")
+        self.Checkbutton10.configure(highlightcolor="black")
+        self.Checkbutton10.configure(justify=LEFT)
+        self.Checkbutton10.configure(text='''Wash Water''')
+        self.Checkbutton10.configure(variable=zamtest_support.wash)
+        self.Checkbutton10.configure(width=171)
+        self.Checkbutton10.deselect()
+        #---------------------------------
+
         #Wet Checkbutton
         self.Checkbutton5 = Checkbutton(top)
-        self.Checkbutton5.place(relx=0.78, rely=0.22, relheight=0.04
+        self.Checkbutton5.place(relx=0.78, rely=0.26, relheight=0.04
                 , relwidth=0.21)
         self.Checkbutton5.configure(activebackground="#d9d9d9")
         self.Checkbutton5.configure(activeforeground="#000000")
@@ -513,7 +532,7 @@ class ZamTest_Form:
         #shortResurface = resurfaceText.replace("|", "")
         #print(resurfaceText)
         #Add "Wash Water"
-        heading = ["Date", "Time", "Rink", "Board Brush", "Wet Cut", "Dry Cut","Edged",
+        heading = ["Date", "Time", "Rink", "Board Brush", "Wash Water", "Wet Cut", "Dry Cut","Edged",
                    "Three Lap", "Flood","Center Flood" , "Dump Tank", "HoneyWells", "Room Temp/Humidity", "Initials", "Comment"]
         #blah = self.parseResurface(resurfaceText[0])
         #print(blah[0])
@@ -578,6 +597,10 @@ class ZamTest_Form:
             resurfaceText = resurfaceText + "0 | "
         if int(zamtest_support.boardBrush.get()) == 1:
             resurfaceText = resurfaceText + "Brush | "
+        else:
+            resurfaceText = resurfaceText + "0 | "
+        if int(zamtest_support.wash.get()) == 1:
+            resurfaceText = resurfaceText + "Wash | "
         else:
             resurfaceText = resurfaceText + "0 | "
         if int(zamtest_support.wet.get()) == 1:

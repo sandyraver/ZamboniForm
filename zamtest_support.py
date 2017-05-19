@@ -29,8 +29,8 @@ def set_Tk_var():
     edge = StringVar()
     global threeLap
     threeLap = StringVar()
-    #global Recent_Resurfaces
-    #Recent_Resurfaces = StringVar()
+    global wash
+    wash = StringVar()
     global wet
     wet = StringVar()
     global centerFlood
