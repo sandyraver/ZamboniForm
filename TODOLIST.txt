@@ -1,3 +1,6 @@
 1. Add a button to remove currently selected item in the listbox (ie. Being able to remove resurfaces if you messed up)
-	Or adding a second window when button is clicked to edit any field of the listbox 
-2. Add delete button for recent resurfaces listbox
+	 Add delete button for recent resurfaces listbox
+2. Add edit button
+		refills all fields
+3. add replace button
+		replaces the currently selected field with what is checked

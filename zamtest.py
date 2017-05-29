@@ -456,6 +456,7 @@ class ZamTest_Form:
         self.Label8.configure(text='''Recent Resurfaces''')
         self.Label8.configure(width=174)
 
+        #Rink1 Checkbutton
         self.Rink1 = Checkbutton(top)
         self.Rink1.place(relx=0.1, rely=0.13, relheight=0.04
                 , relwidth=0.07)
@@ -470,9 +471,9 @@ class ZamTest_Form:
         self.Rink1.configure(text='''Rink 1''')
         self.Rink1.configure(variable=zamtest_support.rink1)
         self.Rink1.deselect()
+        #---------------------------
 
-
-        ##
+        #Rink2 Checkbutton
         self.Rink2 = Checkbutton(top)
         self.Rink2.place(relx=0.26, rely=0.13, relheight=0.04
                 , relwidth=0.07)
@@ -488,39 +489,81 @@ class ZamTest_Form:
         self.Rink2.configure(text='''Rink 2''')
         self.Rink2.configure(variable=zamtest_support.rink2)
         self.Rink2.deselect()
+        #---------------------------
+
+        #Edit Button
+        self.Edit = Button(top)
+        self.Edit.place(relx=0.90, rely=0.68, height=34, width=67)
+        self.Edit.configure(activebackground="#d9d9d9")
+        self.Edit.configure(activeforeground="#000000")
+        self.Edit.configure(background="#d9d9d9")
+        self.Edit.configure(disabledforeground="#a3a3a3")
+        self.Edit.configure(foreground="#000000")
+        self.Edit.configure(highlightbackground="#d9d9d9")
+        self.Edit.configure(highlightcolor="black")
+        self.Edit.configure(pady="0")
+        self.Edit.configure(text='''Edit''')
+        self.Edit.configure(width=67)
+        #---------------------------
+
+
+        #Replace Button
+        self.Replace = Button(top)
+        self.Replace.place(relx=0.90, rely=0.76, height=34, width=67)
+        self.Replace.configure(activebackground="#d9d9d9")
+        self.Replace.configure(activeforeground="#000000")
+        self.Replace.configure(background="#d9d9d9")
+        self.Replace.configure(disabledforeground="#a3a3a3")
+        self.Replace.configure(foreground="#000000")
+        self.Replace.configure(highlightbackground="#d9d9d9")
+        self.Replace.configure(highlightcolor="black")
+        self.Replace.configure(pady="0")
+        self.Replace.configure(text='''Replace''')
+        self.Replace.configure(width=67)
+        #---------------------------
+
+
+        #Delete Button
+        self.Delete = Button(top)
+        self.Delete.place(relx=0.90, rely=0.83, height=34, width=67)
+        self.Delete.configure(activebackground="#d9d9d9")
+        self.Delete.configure(activeforeground="#000000")
+        self.Delete.configure(background="#d9d9d9")
+        self.Delete.configure(disabledforeground="#a3a3a3")
+        self.Delete.configure(foreground="#000000")
+        self.Delete.configure(highlightbackground="#d9d9d9")
+        self.Delete.configure(highlightcolor="black")
+        self.Delete.configure(pady="0")
+        self.Delete.configure(text='''Delete''')
+        self.Delete.configure(width=67)
+        #---------------------------
+
 
 
         self.menubar = Menu(top,font="TkMenuFont",bg=_bgcolor,fg=_fgcolor)
         top.configure(menu = self.menubar)
 
 
-        # Get selected entry
-    # if board/wet/wash/dry/center/3-lap/edge  are in string recheck respective boxes
-    # parse it into individual elements for the text entries
-    # reinsert text entries back into the input boxes in order
+    #function EDIT:
+        #get selected entry
+        
+
+        #parse entry into array
+
+        #if element in array
+            #reselect checkbutton / re enter element into entry box
+
+        #return selected entry
+
+    #function replace(curentry):
+        #curentry[]
 
 
-    # Get selected entry (entr)
-    # if entr.find("Wash", 0)
-    # then check washwater checkbox
-    # if entr.find("Wet", 0)
-    # then check wet checkbox
-    # ...
+    #funcion DeleteCurr:
+        #get slected list from scrolled listbox
 
-    # Parse entry backwards ( If applicable)
-    # Massive systemic problem ( how the fuck do you tell which is which lol)
-    # Algorithm for determining what is what based on element lay out/order
-    # element content can't help in determining no entry checking
-    #
 
-    # Half the number of slots can be cut down
-    # 4 zeros even when every entry is checked
-    # Write resurface could be adjusted to fix this
-    # by making the if statements more complex
-    # So What conflicts with what?
-    # Board brush, wash water stand alone?
-    # wet and dry, Center flood and dry?
-    # Graphically outline what does what
+        #remove selected list from scrolled listbox
 
     def parseResurface(self,txt):
         #----------------
