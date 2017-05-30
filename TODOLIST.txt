@@ -11,9 +11,22 @@
 		--------Entries and Checkbutton Reference---------
 ------------------------------------------------------------
 
+Rink1 - rink 1
+Rink2 - rink 2
+Brush - boardBrush
+Flood0 - wash water
+Wet - wet
+Flood - flood
+ThreeLap - 3 Lap
+Dry - dry
+centerFlood - flood center
+Edge - edge
 
-
-
-
+-------
+Entry3 - dump tank
+Entry4 - temp
+Entry5 - humid
+Entry6 - Comment
+Entry7 - Initials
 
 ---------------------------------------------------------------

@@ -43,7 +43,10 @@ def set_Tk_var():
     rink2 = StringVar()
     global boardBrush
     boardBrush = StringVar()
-
+    global dateStr
+    dateStr = StringVar()
+    global timeStr
+    timeStr = StringVar()
 def init(top, gui, *args, **kwargs):
     global w, top_level, root
     w = gui

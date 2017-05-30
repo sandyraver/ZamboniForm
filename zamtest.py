@@ -56,6 +56,8 @@ def destroy_ZamTest_Form():
 
 
 class ZamTest_Form:
+
+
     def __init__(self, top=None):
         '''This class configures and populates the toplevel window.
            top is the toplevel containing window.'''
@@ -76,6 +78,7 @@ class ZamTest_Form:
         top.title("ZamTest Form")
         top.configure(background="#d9d9d9")
 
+        self.editing = False
 
          #This configures widgets
         ##Ice Complex Banner
@@ -544,25 +547,105 @@ class ZamTest_Form:
         self.Delete.configure(width=67)
         #---------------------------
 
+        #---------------------------
 
+        self.Label1 = Label(top)
+        self.Label1.place(relx=0.6, rely=0.02, height=21, width=50)
+        self.Label1.configure(background="#d9d9d9")
+        self.Label1.configure(disabledforeground="#a3a3a3")
+        self.Label1.configure(foreground="#000000")
+        self.Label1.configure(text='''Date''')
+        self.Label1.configure(width=50)
+
+        self.Entry1 = Entry(top)
+        self.Entry1.place(relx=0.66, rely=0.02, relheight=0.03, relwidth=0.1)
+        self.Entry1.configure(background="white")
+        self.Entry1.configure(disabledforeground="#595959")
+        self.Entry1.configure(font="TkFixedFont")
+        self.Entry1.configure(foreground="#000000")
+        self.Entry1.configure(insertbackground="black")
+        self.Entry1.configure(state=DISABLED)
+        self.Entry1.configure(width=150)
+        self.Entry1.configure(textvariable = zamtest_support.dateStr)
+
+        self.Label2 = Label(top)
+        self.Label2.place(relx=0.77, rely=0.02, height=21, width=33)
+        self.Label2.configure(background="#d9d9d9")
+        self.Label2.configure(disabledforeground="#a3a3a3")
+        self.Label2.configure(foreground="#000000")
+        self.Label2.configure(text='''Time''')
+
+        self.Entry2 = Entry(top)
+        self.Entry2.place(relx=0.82, rely=0.02, relheight=0.03, relwidth=0.08)
+        self.Entry2.configure(background="white")
+        self.Entry2.configure(disabledforeground="#595959")
+        self.Entry2.configure(font="TkFixedFont")
+        self.Entry2.configure(foreground="#000000")
+        self.Entry2.configure(insertbackground="black")
+        self.Entry2.configure(state=DISABLED)
+        self.Entry2.configure(width=100)
+        self.Entry2.configure(textvariable = zamtest_support.timeStr)
+
+
+
+
+        #---------------------------
+
+        self.getTime()
+
+        zamtest_support.dateStr.trace("w", self.getTime)
 
         self.menubar = Menu(top,font="TkMenuFont",bg=_bgcolor,fg=_fgcolor)
         top.configure(menu = self.menubar)
 
 
+
+
+
     #function EDIT:
     def editSelect(self):
+
+        self.editing = True
         #get selected entry
-        selection = self.Scrolledlistbox1.curselection()
-        print(selection)
+        self.Entry1.configure(state = NORMAL)
+        zamtest_support.dateStr.set("")
+        self.Entry2.configure(state = NORMAL)
+        self.Entry2.delete(0,END)
+        try:
+            selection = self.Scrolledlistbox1.curselection()
+            print(selection)
 
-        #parse entry into array
-        value = self.Scrolledlistbox1.get(selection[0])
-        line = self.parseResurface(value)
-        print(line)
+            #parse entry into array
+            value = self.Scrolledlistbox1.get(selection[0])
+            line = self.parseResurface(value)
+            print(line)
 
+        #set date and time
+            zamtest_support.dateStr.set(line[0])
+            zamtest_support.timeStr.set(line[1])
         #if element in array
-
+            c = 0
+            if line[2] == "Rink1":
+                zamtest_support.rink1.set(True)
+                #print("blah")
+            elif line[2] == "Rink2":
+                zamtest_support.rink2.set(True)
+            if line[3] == "Brush":
+                zamtest_support.boardBrush.set(True)
+            if line[4] == "Wash":
+                zamtest_support.wash.set(True)
+            if line[5] == "Wet":
+                zamtest_support.wet.set(True)
+            if line[6] == "Dry":
+                zamtest_support.dry.set(True)
+            if line[7] == "Edged":
+                zamtest_support.edge.set(True)
+            if line[8] == "Three Lap":
+                zamtest_support.threeLap.set(True)
+            if line[9] == "Flood":
+                zamtest_support.flood.set(True)
+            if line[10] == "Center Flood":
+                zamtest_support.centerFlood.set(True)
             #reselect checkbutton / re enter element into entry box
 
         #return selected entry
@@ -576,6 +659,8 @@ class ZamTest_Form:
 
 
         #remove selected list from scrolled listbox
+        except IndexError:
+            print("Nope")
 
     def parseResurface(self,txt):
         #----------------
@@ -658,11 +743,59 @@ class ZamTest_Form:
         else:
             pmam = "AM"
             hour = timm[3]
+        if timm[4] < 10:
+            minit = "0" + str(timm[4])
+        else:
+            minit = str(timm[4])
 
-        timofday =  str(hour) + ":" +  str(timm[4])
+        timofday =  str(hour) + ":" +  minit
         dateandtime = date + " | " + timofday
 
         return(dateandtime + pmam + " | ")
+    def getTime(self, *args):
+
+        if self.editing == False:
+            timm = time.localtime()
+            date = str(timm[1]) + "/" + str(timm[2]) + "/" + str(timm[0])
+
+            if timm[3] > 12:
+                pmam = "PM"
+                hour = timm[3] - 12
+            else:
+                pmam = "AM"
+                hour = timm[3]
+            if timm[4] < 10:
+                minit = "0" + str(timm[4])
+            else:
+                minit = str(timm[4])
+
+            timofday =  str(hour) + ":" +  minit + pmam
+
+            self.Entry1.configure(state = NORMAL)
+            self.Entry1.delete(0,END)
+            self.Entry1.insert(0,date)
+            self.Entry1.configure(state = DISABLED)
+
+
+            self.Entry2.configure(state = NORMAL)
+            self.Entry2.delete(0,END)
+            self.Entry2.insert(0,timofday)
+            self.Entry2.configure(state = DISABLED)
+
+
+            #root.after(10, self.getTime)
+            #self.Entry2.after(10, self.getTime)
+
+        elif self.editing == True:
+            return
+            #self.Entry1.configure(state = NORMAL)
+            #self.Entry1.delete(0,END)
+            #self.Entry2.configure(state = NORMAL)
+            #self.Entry2.delete(0,END)
+
+
+        else:
+            print("wtf")
 
  #this commen
     def writeResurface(self):
@@ -737,12 +870,14 @@ class ZamTest_Form:
         self.Edge.deselect()
         self.ThreeLap.deselect()
         self.Wet.deselect()
+        self.Flood0.deselect()
         self.CenterFlood.deselect()
         self.Rink1.deselect()
         self.Rink2.deselect()
         self.Brush.deselect()
 
-
+        self.editing = False
+        self.getTime()
 
 # The following code is added to facilitate the Scrolled widgets you specified.
 class AutoScroll(object):
