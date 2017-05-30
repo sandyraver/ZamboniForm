@@ -189,6 +189,7 @@ class ZamTest_Form:
         self.Scrolledlistbox1.configure(selectforeground="black")
         self.Scrolledlistbox1.configure(width=10)
         self.Scrolledlistbox1.configure(listvariable=zamtest_support.Recent_Resurfaces)
+        self.Scrolledlistbox1.bind('<FocusOut>', lambda e: self.Scrolledlistbox1.selection_clear(0,END))
         #---------------------------
 
         #Board Brush Checkbutton
@@ -310,7 +311,8 @@ class ZamTest_Form:
 
         #Comment Label
         self.Label6 = Label(top)
-        self.Label6.place(relx=0.0, rely=0.38, height=21, width=154)
+        #self.Label6.place(relx=0.0, rely=0.38, height=21, width=154)
+        self.Label6.place(relx=0.0, rely=0.44, height=21, width=154)
         self.Label6.configure(activebackground="#f9f9f9")
         self.Label6.configure(activeforeground="black")
         self.Label6.configure(anchor=E)
@@ -325,7 +327,8 @@ class ZamTest_Form:
 
         #Initials Label
         self.Label7 = Label(top)
-        self.Label7.place(relx=0.0, rely=0.44, height=21, width=154)
+        #self.Label7.place(relx=0.0, rely=0.44, height=21, width=154)
+        self.Label7.place(relx=0.0, rely=0.38, height=21, width=154)
         self.Label7.configure(activebackground="#f9f9f9")
         self.Label7.configure(activeforeground="black")
         self.Label7.configure(anchor=E)
@@ -385,7 +388,8 @@ class ZamTest_Form:
 
         #Comment Entry
         self.Entry6 = Entry(top)
-        self.Entry6.place(relx=0.21, rely=0.38, relheight=0.03, relwidth=0.2)
+        #self.Entry6.place(relx=0.21, rely=0.38, relheight=0.03, relwidth=0.2)
+        self.Entry6.place(relx=0.21, rely=0.44, relheight=0.03, relwidth=0.2)
         self.Entry6.configure(background="white")
         self.Entry6.configure(disabledforeground="#a3a3a3")
         self.Entry6.configure(font="TkFixedFont")
@@ -400,7 +404,8 @@ class ZamTest_Form:
 
         #Initials Entry
         self.Entry7 = Entry(top)
-        self.Entry7.place(relx=0.21, rely=0.44, relheight=0.03, relwidth=0.2)
+        #self.Entry7.place(relx=0.21, rely=0.44, relheight=0.03, relwidth=0.2)
+        self.Entry7.place(relx=0.21, rely=0.38, relheight=0.03, relwidth=0.2)
         self.Entry7.configure(background="white")
         self.Entry7.configure(disabledforeground="#a3a3a3")
         self.Entry7.configure(font="TkFixedFont")
@@ -504,6 +509,7 @@ class ZamTest_Form:
         self.Edit.configure(pady="0")
         self.Edit.configure(text='''Edit''')
         self.Edit.configure(width=67)
+        self.Edit.configure(command = lambda: self.editSelect())
         #---------------------------
 
 
@@ -545,12 +551,18 @@ class ZamTest_Form:
 
 
     #function EDIT:
+    def editSelect(self):
         #get selected entry
-        
+        selection = self.Scrolledlistbox1.curselection()
+        print(selection)
 
         #parse entry into array
+        value = self.Scrolledlistbox1.get(selection[0])
+        line = self.parseResurface(value)
+        print(line)
 
         #if element in array
+
             #reselect checkbutton / re enter element into entry box
 
         #return selected entry
