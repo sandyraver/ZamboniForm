@@ -357,6 +357,7 @@ class ZamTest_Form:
         self.Entry3.configure(selectbackground="#c4c4c4")
         self.Entry3.configure(selectforeground="black")
         self.Entry3.configure(width=164)
+        self.Entry3.configure(textvariable=zamtest_support.dumpStr)
         #---------------------------
 
         #Temp Entry
@@ -372,6 +373,7 @@ class ZamTest_Form:
         self.Entry4.configure(selectbackground="#c4c4c4")
         self.Entry4.configure(selectforeground="black")
         self.Entry4.configure(width=164)
+        self.Entry4.configure(textvariable=zamtest_support.tempStr)
         #---------------------------
 
         #Temp/Humid Entry
@@ -387,6 +389,24 @@ class ZamTest_Form:
         self.Entry5.configure(selectbackground="#c4c4c4")
         self.Entry5.configure(selectforeground="black")
         self.Entry5.configure(width=164)
+        self.Entry5.configure(textvariable=zamtest_support.humidStr)
+        #---------------------------
+        #Initials Entry
+        self.Entry7 = Entry(top)
+        #self.Entry7.place(relx=0.21, rely=0.44, relheight=0.03, relwidth=0.2)
+        self.Entry7.place(relx=0.21, rely=0.38, relheight=0.03, relwidth=0.2)
+        self.Entry7.configure(background="white")
+        self.Entry7.configure(disabledforeground="#a3a3a3")
+        self.Entry7.configure(font="TkFixedFont")
+        self.Entry7.configure(foreground="#000000")
+        self.Entry7.configure(highlightbackground="#d9d9d9")
+        self.Entry7.configure(highlightcolor="black")
+        self.Entry7.configure(insertbackground="black")
+        self.Entry7.configure(selectbackground="#c4c4c4")
+        self.Entry7.configure(selectforeground="black")
+        self.Entry7.configure(width=164)
+        self.Entry7.configure(textvariable=zamtest_support.initStr)
+        ##self.Entry7.configure(justify="right")
         #---------------------------
 
         #Comment Entry
@@ -403,23 +423,7 @@ class ZamTest_Form:
         self.Entry6.configure(selectbackground="#c4c4c4")
         self.Entry6.configure(selectforeground="black")
         self.Entry6.configure(width=164)
-        #---------------------------
-
-        #Initials Entry
-        self.Entry7 = Entry(top)
-        #self.Entry7.place(relx=0.21, rely=0.44, relheight=0.03, relwidth=0.2)
-        self.Entry7.place(relx=0.21, rely=0.38, relheight=0.03, relwidth=0.2)
-        self.Entry7.configure(background="white")
-        self.Entry7.configure(disabledforeground="#a3a3a3")
-        self.Entry7.configure(font="TkFixedFont")
-        self.Entry7.configure(foreground="#000000")
-        self.Entry7.configure(highlightbackground="#d9d9d9")
-        self.Entry7.configure(highlightcolor="black")
-        self.Entry7.configure(insertbackground="black")
-        self.Entry7.configure(selectbackground="#c4c4c4")
-        self.Entry7.configure(selectforeground="black")
-        self.Entry7.configure(width=164)
-        ##self.Entry7.configure(justify="right")
+        self.Entry6.configure(textvariable=zamtest_support.commStr)
         #---------------------------
 
         #Submit Button
@@ -647,7 +651,11 @@ class ZamTest_Form:
             if line[10] == "Center Flood":
                 zamtest_support.centerFlood.set(True)
             #reselect checkbutton / re enter element into entry box
-
+            zamtest_support.dumpStr.set(line[11])
+            zamtest_support.tempStr.set(line[12])
+            zamtest_support.humidStr.set(line[13])
+            zamtest_support.commStr.set(line[14])
+            zamtest_support.initStr.set(line[15])
         #return selected entry
 
     #function replace(curentry):

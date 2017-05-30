@@ -47,6 +47,16 @@ def set_Tk_var():
     dateStr = StringVar()
     global timeStr
     timeStr = StringVar()
+    global dumpStr
+    dumpStr = StringVar()
+    global tempStr
+    tempStr = StringVar()
+    global humidStr
+    humidStr = StringVar()
+    global commStr
+    commStr = StringVar()
+    global initStr
+    initStr = StringVar()
 def init(top, gui, *args, **kwargs):
     global w, top_level, root
     w = gui
