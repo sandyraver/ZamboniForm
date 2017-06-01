@@ -549,6 +549,7 @@ class ZamTest_Form:
         self.Delete.configure(pady="0")
         self.Delete.configure(text='''Delete''')
         self.Delete.configure(width=67)
+        self.Delete.configure(command=lambda: self.deletCurr() )
         #---------------------------
 
         #---------------------------
@@ -657,18 +658,22 @@ class ZamTest_Form:
             zamtest_support.commStr.set(line[14])
             zamtest_support.initStr.set(line[15])
         #return selected entry
-
+        except IndexError:
+            print("Nope")
     #function replace(curentry):
         #curentry[]
 
 
     #funcion DeleteCurr:
+    def deletCurr(self):
+
+        selection = self.Scrolledlistbox1.curselection()
+        self.Scrolledlistbox1.delete(selection[0])
         #get slected list from scrolled listbox
 
 
         #remove selected list from scrolled listbox
-        except IndexError:
-            print("Nope")
+
 
     def parseResurface(self,txt):
         #----------------
