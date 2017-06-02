@@ -27,9 +27,8 @@ global banner
 global bannerPhoto
 
 def vp_start_gui():
-    '''Starting point when module is the main routine.'''
-    global val, w, root
 
+    global val, w, root
     root = Tk()
     zamtest_support.set_Tk_var()
     top = ZamTest_Form (root)
@@ -38,7 +37,7 @@ def vp_start_gui():
 
 w = None
 def create_ZamTest_Form(root, *args, **kwargs):
-    '''Starting point when module is imported by another program.'''
+
     global w, w_win, rt
     rt = root
     w = Toplevel (root)
@@ -48,6 +47,7 @@ def create_ZamTest_Form(root, *args, **kwargs):
     return (w, top)
 
 def destroy_ZamTest_Form():
+
     global w
     w.destroy()
     w = None
@@ -59,8 +59,7 @@ class ZamTest_Form:
 
 
     def __init__(self, top=None):
-        '''This class configures and populates the toplevel window.
-           top is the toplevel containing window.'''
+
         _bgcolor = '#d9d9d9'  # X11 color: 'gray85'
         _fgcolor = '#000000'  # X11 color: 'black'
         _compcolor = '#d9d9d9' # X11 color: 'gray85'
@@ -80,7 +79,6 @@ class ZamTest_Form:
 
         self.editing = False
 
-         #This configures widgets
         ##Ice Complex Banner
         banner = Image.open("banner.png")
         bannerPhoto = ImageTk.PhotoImage(banner)
@@ -95,8 +93,6 @@ class ZamTest_Form:
         self.label1.configure(foreground="#000000")
         self.label1.configure(highlightbackground="#d9d9d9")
         self.label1.configure(highlightcolor="black")
-        #self.Label.configure(image = bannerPhoto)
-        #self.Label.configure(text='''test''')
         self.label1.configure(width=154)
         #-----------------------------
 
@@ -154,8 +150,6 @@ class ZamTest_Form:
         self.Edge.configure(text='''Edge''')
         self.Edge.configure(variable=zamtest_support.edge)
         self.Edge.configure(width=176)
-        #self.photo = PhotoImage(file="designer.png")
-        #self.Edge.configure(image=self.photo)
         self.Edge.deselect()
         #---------------------------
 
@@ -314,7 +308,6 @@ class ZamTest_Form:
 
         #Comment Label
         self.Label6 = Label(top)
-        #self.Label6.place(relx=0.0, rely=0.38, height=21, width=154)
         self.Label6.place(relx=0.0, rely=0.44, height=21, width=154)
         self.Label6.configure(activebackground="#f9f9f9")
         self.Label6.configure(activeforeground="black")
@@ -330,7 +323,6 @@ class ZamTest_Form:
 
         #Initials Label
         self.Label7 = Label(top)
-        #self.Label7.place(relx=0.0, rely=0.44, height=21, width=154)
         self.Label7.place(relx=0.0, rely=0.38, height=21, width=154)
         self.Label7.configure(activebackground="#f9f9f9")
         self.Label7.configure(activeforeground="black")
@@ -391,9 +383,9 @@ class ZamTest_Form:
         self.Entry5.configure(width=164)
         self.Entry5.configure(textvariable=zamtest_support.humidStr)
         #---------------------------
+
         #Initials Entry
         self.Entry7 = Entry(top)
-        #self.Entry7.place(relx=0.21, rely=0.44, relheight=0.03, relwidth=0.2)
         self.Entry7.place(relx=0.21, rely=0.38, relheight=0.03, relwidth=0.2)
         self.Entry7.configure(background="white")
         self.Entry7.configure(disabledforeground="#a3a3a3")
@@ -406,12 +398,10 @@ class ZamTest_Form:
         self.Entry7.configure(selectforeground="black")
         self.Entry7.configure(width=164)
         self.Entry7.configure(textvariable=zamtest_support.initStr)
-        ##self.Entry7.configure(justify="right")
         #---------------------------
 
         #Comment Entry
         self.Entry6 = Entry(top)
-        #self.Entry6.place(relx=0.21, rely=0.38, relheight=0.03, relwidth=0.2)
         self.Entry6.place(relx=0.21, rely=0.44, relheight=0.03, relwidth=0.2)
         self.Entry6.configure(background="white")
         self.Entry6.configure(disabledforeground="#a3a3a3")
@@ -456,10 +446,10 @@ class ZamTest_Form:
         self.ExportButton.configure(pady="0")
         self.ExportButton.configure(text="Export")
         self.ExportButton.configure(width=157)
-        ## Call Export Function
         self.ExportButton.configure(command =lambda : self.getExportData(self.Scrolledlistbox1.get(0,END)))
         #---------------------------
 
+        #Recent Resurface label
         self.Label8 = Label(top)
         self.Label8.place(relx=0.12, rely=0.64, height=21, width=174)
         self.Label8.configure(background="#d9d9d9")
@@ -553,8 +543,8 @@ class ZamTest_Form:
         self.Delete.configure(command=lambda: self.deletCurr() )
         #---------------------------
 
-        #---------------------------
 
+        #Date label
         self.label1 = Label(top)
         self.label1.place(relx=0.6, rely=0.02, height=21, width=50)
         self.label1.configure(background="#d9d9d9")
@@ -562,7 +552,9 @@ class ZamTest_Form:
         self.label1.configure(foreground="#000000")
         self.label1.configure(text='''Date''')
         self.label1.configure(width=50)
+        #---------------------------
 
+        #Date Entry
         self.date = Entry(top)
         self.date.place(relx=0.66, rely=0.02, relheight=0.03, relwidth=0.1)
         self.date.configure(background="white")
@@ -573,14 +565,18 @@ class ZamTest_Form:
         self.date.configure(state=DISABLED)
         self.date.configure(width=150)
         self.date.configure(textvariable = zamtest_support.dateStr)
+        #---------------------------
 
+        #Time Label
         self.Label2 = Label(top)
         self.Label2.place(relx=0.77, rely=0.02, height=21, width=33)
         self.Label2.configure(background="#d9d9d9")
         self.Label2.configure(disabledforeground="#a3a3a3")
         self.Label2.configure(foreground="#000000")
         self.Label2.configure(text='''Time''')
+        #---------------------------
 
+        #Time Entry
         self.timeEnt = Entry(top)
         self.timeEnt.place(relx=0.82, rely=0.02, relheight=0.03, relwidth=0.08)
         self.timeEnt.configure(background="white")
@@ -591,14 +587,12 @@ class ZamTest_Form:
         self.timeEnt.configure(state=DISABLED)
         self.timeEnt.configure(width=100)
         self.timeEnt.configure(textvariable = zamtest_support.timeStr)
-
-
-
-
         #---------------------------
+
 
         self.getTime()
 
+        #callbacks for modifying time and date see : editSelect()
         zamtest_support.dateStr.trace("w", self.getTime)
         zamtest_support.timeStr.trace("w", self.getTime)
 
@@ -611,26 +605,31 @@ class ZamTest_Form:
 
     #function EDIT:
     def editSelect(self):
+        #----------------
+        ## Description: Edits the selected line and
+        ## re checks options based on line in listbox
+        #----------------
 
         self.editing = True
-        #get selected entry
+
         self.date.configure(state = NORMAL)
         zamtest_support.dateStr.set("")
+
         self.timeEnt.configure(state = NORMAL)
-        self.timeEnt.delete(0,END)
+        zamtest_support.timeStr.set("")
+
         try:
+            #get selected entry
             selection = self.Scrolledlistbox1.curselection()
-            print(selection)
 
             #parse entry into array
             value = self.Scrolledlistbox1.get(selection[0])
             line = self.parseResurface(value)
-            print(line)
 
         #set label1 and time
             zamtest_support.dateStr.set(line[0])
             zamtest_support.timeStr.set(line[1])
-        #if element in array
+        #if element in array reselect checkbutton /
             c = 0
             if line[2] == "Rink1":
                 zamtest_support.rink1.set(True)
@@ -653,24 +652,35 @@ class ZamTest_Form:
                 zamtest_support.flood.set(True)
             if line[10] == "Center Flood":
                 zamtest_support.centerFlood.set(True)
-            #reselect checkbutton / re enter element into entry box
+
+            # re enter element into entry box
             zamtest_support.dumpStr.set(line[11])
             zamtest_support.tempStr.set(line[12])
             zamtest_support.humidStr.set(line[13])
             zamtest_support.initStr.set(line[14])
             zamtest_support.commStr.set(line[15])
-        #return selected entry
+
         except IndexError:
             print("Nope")
-    #function replace(curentry):
+
     def replace(self):
+        #----------------
+        ## Description: Replaces current selected list
+        ## with current options
+        #----------------
+
         try:
+
+            #get selected list
             selection = self.Scrolledlistbox1.curselection()
             self.Scrolledlistbox1.delete(selection[0])
+
+            #Add date and time from entry
             resurfaceText = ""
             resurfaceText = resurfaceText + zamtest_support.dateStr.get() + " | "
             resurfaceText = resurfaceText + zamtest_support.timeStr.get() + " | "
-            #print(resurfaceText)
+
+            #check all check buttons and format
             if int(zamtest_support.rink1.get()) == 1:
                 resurfaceText = resurfaceText + "Rink1 | "
             elif int(zamtest_support.rink2.get()) == 1:
@@ -708,31 +718,30 @@ class ZamTest_Form:
                 resurfaceText = resurfaceText + "Center Flood | "
             else:
                 resurfaceText = resurfaceText + "0 | "
+
+            #Add entries and format
             resurfaceText = resurfaceText + self.Entry3.get() + " | "
             resurfaceText = resurfaceText + self.Entry4.get() + " | "
             resurfaceText = resurfaceText + self.Entry5.get() + " | "
             resurfaceText = resurfaceText + self.Entry7.get() + " | "
             resurfaceText = resurfaceText + self.Entry6.get() + " | "
 
-
+            #Replace listbox string
             self.Scrolledlistbox1.insert(selection[0],resurfaceText)
             self.getTime()
 
-        #curentry[]
         except IndexError:
             print("Nope")
 
-        return
-
     #funcion DeleteCurr:
     def deletCurr(self):
+        #----------------
+        ## Description: Deletes current selected member of listbox
+        #----------------
 
+        #get slected list from scrolled listbox
         selection = self.Scrolledlistbox1.curselection()
         self.Scrolledlistbox1.delete(selection[0])
-        #get slected list from scrolled listbox
-
-
-        #remove selected list from scrolled listbox
 
 
     def parseResurface(self,txt):
@@ -770,43 +779,35 @@ class ZamTest_Form:
         ##Description: Accepts list of strings from Recent resurfaces(scrolled listbox)
         ## adds formats adds heading and
         #---------------------------
-        resurfaceText =  arr #self.Scrolledlistbox1.get(0,END)
-        #shortResurface = resurfaceText.replace("|", "")
-        #print(resurfaceText)
-        #Add "Wash Water"
+        resurfaceText =  arr
+
         heading = ["label1", "Time", "Rink", "Board Brush", "Wash Water", "Wet Cut", "Dry Cut","Edged",
                    "Three Lap", "Flood","Center Flood" , "Dump Tank", "HoneyWells", "Room Temp/Humidity", "Initials", "Comment"]
-        #blah = self.parseResurface(resurfaceText[0])
-        #print(blah[0])
 
         #2d array for exporting
-        #print(len(self.Scrolledlistbox1.get(0,END)))
-        print(len(arr))
         exp = [[] for i in range(len(arr) + 1)]
 
         #iterator
         count = 1
 
 ##        #set heading for xls
-##        for l in heading:
-##            exp[0].append(l)
-##        print(exp[0])
         exp[0] = heading
+
         #loop through arr
-            #set line = parse(i)
-            #exp[count] = line
-            #count += 1
         for c in arr:
             line = self.parseResurface(c)
-            #print(exp[count])
             exp[count] = line
-            print("exp of [" + str(count) +"] :" +  str(exp[count]))
             count += 1
+
         #export
         self.exportXls(exp)
 
 
     def writeTime(self):
+        #---------------------------
+        ##Description: Gets and writes time (formatted)
+        #---------------------------
+
         timm = time.localtime()
         label1 = str(timm[1]) + "/" + str(timm[2]) + "/" + str(timm[0])
 
@@ -825,7 +826,13 @@ class ZamTest_Form:
         label1andtime = label1 + " | " + timofday
 
         return(label1andtime + pmam + " | ")
+
+
     def getTime(self, *args):
+        #---------------------------
+        ##Description: Gets and updates date and time to date and time entries
+        ## While editing boolean is false
+        #---------------------------
 
         if self.editing == False:
             timm = time.localtime()
@@ -855,28 +862,20 @@ class ZamTest_Form:
             self.timeEnt.insert(0,timofday)
             self.timeEnt.configure(state = DISABLED)
 
-
-            #root.after(10, self.getTime)
-            #self.timeEnt.after(10, self.getTime)
-
         elif self.editing == True:
             return
-            #self.date.configure(state = NORMAL)
-            #self.date.delete(0,END)
-            #self.timeEnt.configure(state = NORMAL)
-            #self.timeEnt.delete(0,END)
-
 
         else:
             print("wtf")
 
  #this commen
     def writeResurface(self):
-        #print(zamtest_support.centerFlood.get())
-        #creat resurface text = label1 and time
-        #writeTim()
+        #---------------------------
+        ##Description: Gets resurface data from the entries and check boxes
+        ## formats, and adds them to the listbox
+        #---------------------------
+
         resurfaceText=self.writeTime()
-        #get checks and entries ----------------------------------------
 
         #checks
         if int(zamtest_support.rink1.get()) == 1:
@@ -952,7 +951,6 @@ class ZamTest_Form:
         self.editing = False
         self.getTime()
 
-# The following code is added to facilitate the Scrolled widgets you specified.
 class AutoScroll(object):
     '''Configure the scrollbars for a widget.'''
 
