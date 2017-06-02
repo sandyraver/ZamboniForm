@@ -629,6 +629,18 @@ class ZamTest_Form:
         #set label1 and time
             zamtest_support.dateStr.set(line[0])
             zamtest_support.timeStr.set(line[1])
+            
+        #Clearing all checkboxes
+            self.Flood.deselect()
+            self.Dry.deselect()
+            self.Edge.deselect()
+            self.ThreeLap.deselect()
+            self.Wet.deselect()
+            self.Flood0.deselect()
+            self.CenterFlood.deselect()
+            self.Rink1.deselect()
+            self.Rink2.deselect()
+            self.Brush.deselect()
         #if element in array reselect checkbutton /
             c = 0
             if line[2] == "Rink1":
