@@ -84,20 +84,20 @@ class ZamTest_Form:
         ##Ice Complex Banner
         banner = Image.open("banner.png")
         bannerPhoto = ImageTk.PhotoImage(banner)
-        self.Label1 = Label(top, image=bannerPhoto)
-        self.Label1.image = bannerPhoto
-        self.Label1.place(relx=0.01, rely=0.02, height=60, width=300)
-        self.Label1.configure(activebackground="#f9f9f9")
-        self.Label1.configure(activeforeground="black")
-        self.Label1.configure(anchor=CENTER)
-        self.Label1.configure(background="#d9d9d9")
-        self.Label1.configure(disabledforeground="#a3a3a3")
-        self.Label1.configure(foreground="#000000")
-        self.Label1.configure(highlightbackground="#d9d9d9")
-        self.Label1.configure(highlightcolor="black")
+        self.label1 = Label(top, image=bannerPhoto)
+        self.label1.image = bannerPhoto
+        self.label1.place(relx=0.01, rely=0.02, height=60, width=300)
+        self.label1.configure(activebackground="#f9f9f9")
+        self.label1.configure(activeforeground="black")
+        self.label1.configure(anchor=CENTER)
+        self.label1.configure(background="#d9d9d9")
+        self.label1.configure(disabledforeground="#a3a3a3")
+        self.label1.configure(foreground="#000000")
+        self.label1.configure(highlightbackground="#d9d9d9")
+        self.label1.configure(highlightcolor="black")
         #self.Label.configure(image = bannerPhoto)
         #self.Label.configure(text='''test''')
-        self.Label1.configure(width=154)
+        self.label1.configure(width=154)
         #-----------------------------
 
         #Flood Checkbutton
@@ -533,6 +533,7 @@ class ZamTest_Form:
         self.Replace.configure(pady="0")
         self.Replace.configure(text='''Replace''')
         self.Replace.configure(width=67)
+        self.Replace.configure(command = lambda: self.replace())
         #---------------------------
 
 
@@ -554,24 +555,24 @@ class ZamTest_Form:
 
         #---------------------------
 
-        self.Label1 = Label(top)
-        self.Label1.place(relx=0.6, rely=0.02, height=21, width=50)
-        self.Label1.configure(background="#d9d9d9")
-        self.Label1.configure(disabledforeground="#a3a3a3")
-        self.Label1.configure(foreground="#000000")
-        self.Label1.configure(text='''Date''')
-        self.Label1.configure(width=50)
+        self.label1 = Label(top)
+        self.label1.place(relx=0.6, rely=0.02, height=21, width=50)
+        self.label1.configure(background="#d9d9d9")
+        self.label1.configure(disabledforeground="#a3a3a3")
+        self.label1.configure(foreground="#000000")
+        self.label1.configure(text='''Date''')
+        self.label1.configure(width=50)
 
-        self.Entry1 = Entry(top)
-        self.Entry1.place(relx=0.66, rely=0.02, relheight=0.03, relwidth=0.1)
-        self.Entry1.configure(background="white")
-        self.Entry1.configure(disabledforeground="#595959")
-        self.Entry1.configure(font="TkFixedFont")
-        self.Entry1.configure(foreground="#000000")
-        self.Entry1.configure(insertbackground="black")
-        self.Entry1.configure(state=DISABLED)
-        self.Entry1.configure(width=150)
-        self.Entry1.configure(textvariable = zamtest_support.dateStr)
+        self.date = Entry(top)
+        self.date.place(relx=0.66, rely=0.02, relheight=0.03, relwidth=0.1)
+        self.date.configure(background="white")
+        self.date.configure(disabledforeground="#595959")
+        self.date.configure(font="TkFixedFont")
+        self.date.configure(foreground="#000000")
+        self.date.configure(insertbackground="black")
+        self.date.configure(state=DISABLED)
+        self.date.configure(width=150)
+        self.date.configure(textvariable = zamtest_support.dateStr)
 
         self.Label2 = Label(top)
         self.Label2.place(relx=0.77, rely=0.02, height=21, width=33)
@@ -580,16 +581,16 @@ class ZamTest_Form:
         self.Label2.configure(foreground="#000000")
         self.Label2.configure(text='''Time''')
 
-        self.Entry2 = Entry(top)
-        self.Entry2.place(relx=0.82, rely=0.02, relheight=0.03, relwidth=0.08)
-        self.Entry2.configure(background="white")
-        self.Entry2.configure(disabledforeground="#595959")
-        self.Entry2.configure(font="TkFixedFont")
-        self.Entry2.configure(foreground="#000000")
-        self.Entry2.configure(insertbackground="black")
-        self.Entry2.configure(state=DISABLED)
-        self.Entry2.configure(width=100)
-        self.Entry2.configure(textvariable = zamtest_support.timeStr)
+        self.timeEnt = Entry(top)
+        self.timeEnt.place(relx=0.82, rely=0.02, relheight=0.03, relwidth=0.08)
+        self.timeEnt.configure(background="white")
+        self.timeEnt.configure(disabledforeground="#595959")
+        self.timeEnt.configure(font="TkFixedFont")
+        self.timeEnt.configure(foreground="#000000")
+        self.timeEnt.configure(insertbackground="black")
+        self.timeEnt.configure(state=DISABLED)
+        self.timeEnt.configure(width=100)
+        self.timeEnt.configure(textvariable = zamtest_support.timeStr)
 
 
 
@@ -599,6 +600,7 @@ class ZamTest_Form:
         self.getTime()
 
         zamtest_support.dateStr.trace("w", self.getTime)
+        zamtest_support.timeStr.trace("w", self.getTime)
 
         self.menubar = Menu(top,font="TkMenuFont",bg=_bgcolor,fg=_fgcolor)
         top.configure(menu = self.menubar)
@@ -612,10 +614,10 @@ class ZamTest_Form:
 
         self.editing = True
         #get selected entry
-        self.Entry1.configure(state = NORMAL)
+        self.date.configure(state = NORMAL)
         zamtest_support.dateStr.set("")
-        self.Entry2.configure(state = NORMAL)
-        self.Entry2.delete(0,END)
+        self.timeEnt.configure(state = NORMAL)
+        self.timeEnt.delete(0,END)
         try:
             selection = self.Scrolledlistbox1.curselection()
             print(selection)
@@ -625,7 +627,7 @@ class ZamTest_Form:
             line = self.parseResurface(value)
             print(line)
 
-        #set date and time
+        #set label1 and time
             zamtest_support.dateStr.set(line[0])
             zamtest_support.timeStr.set(line[1])
         #if element in array
@@ -655,14 +657,72 @@ class ZamTest_Form:
             zamtest_support.dumpStr.set(line[11])
             zamtest_support.tempStr.set(line[12])
             zamtest_support.humidStr.set(line[13])
-            zamtest_support.commStr.set(line[14])
-            zamtest_support.initStr.set(line[15])
+            zamtest_support.initStr.set(line[14])
+            zamtest_support.commStr.set(line[15])
         #return selected entry
         except IndexError:
             print("Nope")
     #function replace(curentry):
-        #curentry[]
+    def replace(self):
+        try:
+            selection = self.Scrolledlistbox1.curselection()
+            self.Scrolledlistbox1.delete(selection[0])
+            resurfaceText = ""
+            resurfaceText = resurfaceText + zamtest_support.dateStr.get() + " | "
+            resurfaceText = resurfaceText + zamtest_support.timeStr.get() + " | "
+            #print(resurfaceText)
+            if int(zamtest_support.rink1.get()) == 1:
+                resurfaceText = resurfaceText + "Rink1 | "
+            elif int(zamtest_support.rink2.get()) == 1:
+                resurfaceText = resurfaceText + "Rink2 | "
+            else:
+                resurfaceText = resurfaceText + "0 | "
+            if int(zamtest_support.boardBrush.get()) == 1:
+                resurfaceText = resurfaceText + "Brush | "
+            else:
+                resurfaceText = resurfaceText + "0 | "
+            if int(zamtest_support.wash.get()) == 1:
+                resurfaceText = resurfaceText + "Wash | "
+            else:
+                resurfaceText = resurfaceText + "0 | "
+            if int(zamtest_support.wet.get()) == 1:
+                resurfaceText = resurfaceText + "Wet | 0 | 0 | 0 | "
+                self.Dry.deselect()
+            elif int(zamtest_support.dry.get()) == 1:
+                resurfaceText = resurfaceText + "0 | Dry | "
+                if int(zamtest_support.edge.get()) == 1:
+                    resurfaceText = resurfaceText + "Edged | "
+                else:
+                    resurfaceText = resurfaceText + "0 | "
+                if int(zamtest_support.threeLap.get()) == 1:
+                    resurfaceText = resurfaceText + "Three Lap | "
+                else:
+                    resurfaceText = resurfaceText + "0 | "
+            else:
+                resurfaceText = resurfaceText + "0 | 0 | 0 | 0 | "
+            if int(zamtest_support.flood.get()) == 1:
+                resurfaceText = resurfaceText + "Flood | "
+            else:
+                resurfaceText = resurfaceText + "0 | "
+            if int(zamtest_support.centerFlood.get()) == 1:
+                resurfaceText = resurfaceText + "Center Flood | "
+            else:
+                resurfaceText = resurfaceText + "0 | "
+            resurfaceText = resurfaceText + self.Entry3.get() + " | "
+            resurfaceText = resurfaceText + self.Entry4.get() + " | "
+            resurfaceText = resurfaceText + self.Entry5.get() + " | "
+            resurfaceText = resurfaceText + self.Entry7.get() + " | "
+            resurfaceText = resurfaceText + self.Entry6.get() + " | "
 
+
+            self.Scrolledlistbox1.insert(selection[0],resurfaceText)
+            self.getTime()
+
+        #curentry[]
+        except IndexError:
+            print("Nope")
+
+        return
 
     #funcion DeleteCurr:
     def deletCurr(self):
@@ -714,7 +774,7 @@ class ZamTest_Form:
         #shortResurface = resurfaceText.replace("|", "")
         #print(resurfaceText)
         #Add "Wash Water"
-        heading = ["Date", "Time", "Rink", "Board Brush", "Wash Water", "Wet Cut", "Dry Cut","Edged",
+        heading = ["label1", "Time", "Rink", "Board Brush", "Wash Water", "Wet Cut", "Dry Cut","Edged",
                    "Three Lap", "Flood","Center Flood" , "Dump Tank", "HoneyWells", "Room Temp/Humidity", "Initials", "Comment"]
         #blah = self.parseResurface(resurfaceText[0])
         #print(blah[0])
@@ -748,7 +808,7 @@ class ZamTest_Form:
 
     def writeTime(self):
         timm = time.localtime()
-        date = str(timm[1]) + "/" + str(timm[2]) + "/" + str(timm[0])
+        label1 = str(timm[1]) + "/" + str(timm[2]) + "/" + str(timm[0])
 
         if timm[3] > 12:
             pmam = "PM"
@@ -762,9 +822,9 @@ class ZamTest_Form:
             minit = str(timm[4])
 
         timofday =  str(hour) + ":" +  minit
-        dateandtime = date + " | " + timofday
+        label1andtime = label1 + " | " + timofday
 
-        return(dateandtime + pmam + " | ")
+        return(label1andtime + pmam + " | ")
     def getTime(self, *args):
 
         if self.editing == False:
@@ -784,27 +844,27 @@ class ZamTest_Form:
 
             timofday =  str(hour) + ":" +  minit + pmam
 
-            self.Entry1.configure(state = NORMAL)
-            self.Entry1.delete(0,END)
-            self.Entry1.insert(0,date)
-            self.Entry1.configure(state = DISABLED)
+            self.date.configure(state = NORMAL)
+            self.date.delete(0,END)
+            self.date.insert(0,date)
+            self.date.configure(state = DISABLED)
 
 
-            self.Entry2.configure(state = NORMAL)
-            self.Entry2.delete(0,END)
-            self.Entry2.insert(0,timofday)
-            self.Entry2.configure(state = DISABLED)
+            self.timeEnt.configure(state = NORMAL)
+            self.timeEnt.delete(0,END)
+            self.timeEnt.insert(0,timofday)
+            self.timeEnt.configure(state = DISABLED)
 
 
             #root.after(10, self.getTime)
-            #self.Entry2.after(10, self.getTime)
+            #self.timeEnt.after(10, self.getTime)
 
         elif self.editing == True:
             return
-            #self.Entry1.configure(state = NORMAL)
-            #self.Entry1.delete(0,END)
-            #self.Entry2.configure(state = NORMAL)
-            #self.Entry2.delete(0,END)
+            #self.date.configure(state = NORMAL)
+            #self.date.delete(0,END)
+            #self.timeEnt.configure(state = NORMAL)
+            #self.timeEnt.delete(0,END)
 
 
         else:
@@ -813,7 +873,7 @@ class ZamTest_Form:
  #this commen
     def writeResurface(self):
         #print(zamtest_support.centerFlood.get())
-        #creat resurface text = date and time
+        #creat resurface text = label1 and time
         #writeTim()
         resurfaceText=self.writeTime()
         #get checks and entries ----------------------------------------
