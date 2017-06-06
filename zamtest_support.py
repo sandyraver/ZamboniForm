@@ -47,8 +47,6 @@ def set_Tk_var():
     dateStr = StringVar()
     global timeStr
     timeStr = StringVar()
-    global timeStr
-    timeStr = StringVar()
     global dumpStr
     dumpStr = StringVar()
     global tempStr
