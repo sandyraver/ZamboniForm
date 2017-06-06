@@ -629,7 +629,7 @@ class ZamTest_Form:
         #set label1 and time
             zamtest_support.dateStr.set(line[0])
             zamtest_support.timeStr.set(line[1])
-            
+
         #Clearing all checkboxes
             self.Flood.deselect()
             self.Dry.deselect()
@@ -741,6 +741,8 @@ class ZamTest_Form:
             #Replace listbox string
             self.Scrolledlistbox1.insert(selection[0],resurfaceText)
             self.getTime()
+
+
 
         except IndexError:
             print("Nope")
